@@ -1,0 +1,55 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened">- </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> -</mat-icon>
+  </button>
+  STAFF INFORMATION SYSTEM
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img
+      class="avatar mat-elevation-z8"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcRysXbS9yaP5Bmke_veZbm2K8EiocjFQKLUkNLkgb&s"
+    />
+
+    <h4 class="name"><b>STAFF</b></h4>
+    <p class="designation"></p>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/home">
+      <mat-icon></mat-icon>
+      <span><i>➢ Admin</i></span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/detail">
+      <mat-icon></mat-icon>
+      <span><i>➢ Staff</i></span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/home">
+      <mat-icon></mat-icon>
+      <span><i>➢ Profile</i></span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/about">
+      <mat-icon></mat-icon>
+      <span><i>➢ About</i></span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/help">
+      <mat-icon></mat-icon>
+      <span><i>➢ Help</i></span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+  </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+

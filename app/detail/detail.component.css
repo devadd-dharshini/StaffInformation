@@ -1,0 +1,15 @@
+mat-error
+{
+    color: red;
+}
+input,select
+{
+    color: blue;
+    margin-top: 20px;
+}
+button {
+    padding-inline:30 px;
+    Padding-block:15px;
+    Border: 1px solid #000;
+    Background: #eee;
+    }

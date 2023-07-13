@@ -1,0 +1,159 @@
+<div class="text-centre">
+  <h1 style="color:blueviolet">STAFF INFORMATION SYSTEM</h1>
+</div>
+
+<form [formGroup] = "devaFormGroup">
+  <label for="Staff_name">STAFFNAME : </label>
+  <input formControlName="Staff_name" type="text"/><br>
+  <mat-error *ngIf="devaFormGroup.get('Staff_name')?.invalid">Invalid Name. Only alphabetic characters are allowed.</mat-error>
+  <br/>
+  <label for="Staff_id">STAFFID : </label>
+    <input formControlName="Staffid" type="number"/><br>
+    <mat-error *ngIf="devaFormGroup.get('Staffid')?.errors?.['required']" class="error">Staff id required.</mat-error>
+    <br/>
+    <label for="Dob">DOB : </label>
+    <input formControlName="DOB" type="date"/><br>
+    <mat-error *ngIf="devaFormGroup.get('DOB')?.errors?.['required']" class="error">Date of Birth is required.</mat-error>
+    <br/>
+    <label for="Dept">DEPARTMENT : </label>
+    <select formControlName="department">
+      <option value="">Select department</option>
+      <option value="BCA">BCA</option>
+      <option value="BBA">BSC CS</option>
+      <option value="BCOM CA">BSC IT</option>
+      <option value="BSC CS">BCOM CA</option>
+      <option value="BCS IT">BBA</option>
+    </select>
+    <br>
+    <mat-error *ngIf="devaFormGroup.get('department')?.invalid">Invalid must Select a department</mat-error>
+    <br/>
+    <label for="Design">DESIGNATION : </label>
+    <input  formControlName="Designation" type="text"/><br>
+    <mat-error *ngIf="devaFormGroup.get('Designation')?.invalid">Invalid Name. Only alphabetic characters are allowed.</mat-error>
+    <br/>
+    <label for="salary">SALARY : </label>
+    <input formControlName="Salary" type="number"/><br>
+    <mat-error *ngIf="devaFormGroup.get('Salary')?.errors?.['pattern']" class="error">Only positive numbers are allowed.</mat-error>
+    <br/>
+    
+
+    <input name="button" class="custom_button" type="button" value="Save"(click)="saveAction()"/> 
+    <input name="button" class="custom_button" type="button" value="Fetch"(click)="fetchAction()"/><br>
+    <input name="button" class="custom_button" type="button" value="Reset"(click)="resetAction()"/>
+    <input placeholder="Search" (Keyup)="applyFilter($event)">
+
+
+
+</form>
+
+
+    <div class="line">
+        <a style="color: rgb(0, 255, 0);margin-top: 5px;"></a>
+        </div>
+        <table mat-table [dataSource]="this.detail.dataSource" class="mat-elevation-z8">
+          
+          <ng-container matColumnDef="Personal Details">
+              <th mat-header-cell *matHeaderCellDef  style="text-align: center;"><b><a style="font-style:italic;" style="color:rgb(255, 0, 0)">STAFFNAME</a></b> </th>
+              <td mat-cell *matCellDef="let deva" style="text-align: center;">
+                  <div style="font-weight: 600;">
+                      {{deva['staff_name']| uppercase}}
+                  </div>
+        
+        
+        {{deva['Staff_name']}}<br/>
+                  
+        
+              </td>
+          </ng-container>
+          <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef  style="text-align: center;"><b><a style="font-style:italic;" style="color:rgb(255, 0, 0)">STAFFID</a></b> </th>
+            <td mat-cell *matCellDef="let deva" style="text-align: center;">
+                
+      
+      
+      {{deva['Staffid']}}
+                
+      
+            </td>
+            </ng-container>
+          <ng-container matColumnDef="DOB">
+            <th mat-header-cell *matHeaderCellDef  style="text-align: center;"><b><a style="font-style:italic;" style="color:rgb(255, 0, 0)">DATE OF BIRTH</a></b> </th>
+            <td mat-cell *matCellDef="let deva" style="text-align: center;">
+                
+      
+      
+                {{deva['DOB']}}
+                
+      
+            </td>
+        </ng-container>
+      
+      <ng-container matColumnDef="Dept">
+        <th mat-header-cell *matHeaderCellDef  style="text-align: center;"><b><a style="font-style:italic;" style="color:rgb(255, 0, 0)">DEPARTMENT</a></b> </th>
+        <td mat-cell *matCellDef="let deva" style="text-align: center;">
+            
+  
+  
+            {{deva['Department']}}
+            
+  
+        </td>
+    </ng-container>
+        <ng-container matColumnDef="Design">
+          <th mat-header-cell *matHeaderCellDef  style="text-align: center;"><b><a style="font-style:italic;" style="color:rgb(255, 0, 0)">DESIGNATION</a></b> </th>
+          <td mat-cell *matCellDef="let deva" style="text-align: center;">
+              
+    
+    
+              {{deva['Designation']}}
+              
+    
+          </td>
+      </ng-container>
+          <ng-container matColumnDef="Salary">
+            <th mat-header-cell *matHeaderCellDef  style="text-align: center;"><b><a style="font-style:italic;" style="color:rgb(255, 0, 0)">SALARY</a></b> </th>
+            <td mat-cell *matCellDef="let deva" style="text-align: center;">
+                
+      
+      
+                {{deva['Salary']}}
+                
+      
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef  style="text-align: center;"><b><a style="font-style:italic;" style="color:rgb(255, 0, 0)">ACTIONS</a></b> </th>
+            <td mat-cell *matCellDef="let deva" style="text-align: center;">
+              <button mat-button (click)="editAction(deva)">EDIT</button>
+              </td>
+              </ng-container>
+          
+
+            <ng-container matColumnDef="Display">
+              <th mat-header-cell *matHeaderCellDef  style="text-align: center;"><b><a style="font-style:italic;" style="color:rgb(255, 0, 0)">DISPLAY</a></b> </th>
+              <td mat-cell *matCellDef="let deva" style="text-align: center;">
+                <button mat-button (click)="deleteAction(deva)">DELETE</button>
+                </td>
+                </ng-container>
+
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let deva; columns:displayedColumns;"></tr>
+        </table>
+        
+<!--<div class="list_item" *ngFor="let deva of detail.deva">
+  <h3 class="field_name">{{deva['field_name']}}<span class="Staff_id">({{deva['Staff_id']}})</span>
+    <span class="Staff_name">({{deva['Staff_name']}})</span>
+    <span class="DOB">({{deva['DOB']}})</span>
+    <span class="Department">({{deva['Department']}})</span>
+    <span class="Designation">({{deva['Designation']}})</span>
+    <span class="Salary">({{deva['Salary']}})</span>
+  </h3>
+  <button class="custom_button edit_button_color" (click)="editAction(deva)">Edit</button>
+  <button class="custom_button delete_button_color" (click)="deleteAction(deva)">Delete</button>
+  <div class="line gray_line"></div>
+</div>-->
+
+
+
+

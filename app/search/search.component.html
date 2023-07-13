@@ -1,0 +1,10 @@
+<div>
+    <input type="text" [(ngModel)]="searchText" (input)="searchEmployees()" placeholder="Search by name...">
+  </div>
+  
+  <ul>
+    <li *ngFor="let employee of employees">
+      {{ employee.name }} - {{ employee.department }}
+    </li>
+  </ul>
+  

@@ -1,0 +1,62 @@
+<div class="background"></div>
+<mat-toolbar color="accent">
+    <mat-toolbar-row>
+      <h1 style="color:rgb(226, 43, 43)">STAFF INFO </h1>
+      <span class="example-fill-reamining-space"></span>
+      <span class="align-centre"></span>
+      <span class="example-spacer"></span>
+      <!--<button mat-button>About</button>
+      <button mat-button>Contact</button>-->
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voicemail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-card class="example-card">
+    <mat-card-header class="text-align-centre">
+      <mat-card-title class="text-align-centre">LOGIN</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="5">
+          <tr>
+            <td>
+              <form (ngSubmit)="login()">
+                <div>
+                  
+                    
+                  <input type="text" placeholder="username" name="username" [(ngModel)]="username">
+               
+                </div> 
+                
+               
+                <div>
+                  
+                  <input type="password" placeholder="password" name="password" [(ngModel)]="password">
+                </div>
+             </form>
+            </td>
+          </tr>   
+        </table>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="login()" color="accent">Login</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  
